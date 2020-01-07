@@ -19,9 +19,11 @@ const MyWorkouts = () => {
 
     return (
         <div>
-            <h1>Add Exercise</h1>
+            <h3>Add Exercise</h3>
             <AddExercise />   
         </div>
     )
 }
+
+export default MyWorkouts;
 
