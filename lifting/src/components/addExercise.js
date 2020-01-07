@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import axiosWithAuth from './axiosWithAuth'
 
 
-const addExercise = () => {
+const AddExercise = () => {
     const [exerciseData, setExerciseData] = useState({name:'', amount_lifted:'', reps: '', body_region:'', sets: '', date: '' })
 
     const handleChange = e => {
@@ -75,4 +75,4 @@ const addExercise = () => {
 
 }
 
-export default addExercise
+export default AddExercise

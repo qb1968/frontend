@@ -1,13 +1,50 @@
 .App {
 background-color: #FFA07A;
 min-height: 100vh;
-display: flex
+display: flex;
+flex-flow: wrap column;
 
 
 }
 
-.title {
+.exercises {
+margin: 0 auto;
+}
+
+input,
+textarea {
+  margin-top: 32px;
+  padding: 0.5rem;
+  font-size: 16px;
+  width: 100%;
+  display: block;
+  color: black;
+  border: 2px solid #A9A9A9
+
+  ;
+}
+
+
+.nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     width: 100%;
+    background-color: #e8d4b4 ;
+    
+
+}
+
+.title {
+    width: 50%;
+    margin-left: 2%;
+}
+
+
+
+.links {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly
+
 }
