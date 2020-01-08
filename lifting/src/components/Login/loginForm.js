@@ -2,9 +2,11 @@ import React from 'react';
 import {BrowserRouter as Router,Route,Link } from "react-router-dom";
 import styled from 'styled-components';
 import "./styles.css"
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom';
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faTwitter,faFacebook,faInstagram,faSnapchat} from '@fortawesome/free-brands-svg-icons'
+import { useState, useEffect } from 'react';
 const Main=styled.div`
     width:100%;
     background-image:url("https://images.unsplash.com/photo-1507398941214-572c25f4b1dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1266&q=80");
@@ -63,23 +65,58 @@ const Button=styled.button`
 `
 
 function LoginForm(props){
+    const [state,setState]=useState();
+    const [log,setLog]=useState();
+    const [pass,setPass]=useState();
+    const [valid,setValid]=useState();
+    useEffect(() => {
+           axios
+            .get(`https://weightlifting-journal.herokuapp.com/`)
+            .then(response => {
+              setState(response.data.message);
+              
+            })
+            .catch(error => {
+              console.error(error);
+            });
+      },[]);
+    function UserValidations(e){
+        setLog(e.target.value);
+    }
+    function PasswordValidations(e){
+        setPass(e.target.value);
+    }
+    function validationCheck(e){
+        e.preventDefault();
+        console.log(log);
+        console.log(pass);
+        if(!(log.includes("@"))){
+            setValid('Invalid Input!');
+        }else if(pass.length<8){
+            setValid('Invalid Input!');
+        }else{
+            setValid('');
+        }
+    }
     return(
         <Main>
             <Container>
                 <Form>
                       <h3>Log In to Your Account</h3>
                       <label htmlFor="login"><h4>Username</h4></label>
-                      <Input id="login" type="text" placeholder=" Enter email or Username" name="username"/>
-                      <Input id="login" type="password" placeholder=" Password" name="Password"/>
+                      <Input onChange={UserValidations} id="login" type="text" placeholder="&nbsp;Enter email or Username" name="username"/>
+                      <Input onChange={PasswordValidations} id="login" type="password" placeholder="&nbsp;Password" name="Password"/>
+                      <div style={{fontSize:12,color:"red"}}>{valid}</div>
                       <div className="forgotPassword">
                         <input id="remember" type="checkbox"/><span>Remember me</span><a href="#">Forgot Password?</a>
                      </div>
-                      <Button type="submit">Log in</Button>
+                      <Button onClick={validationCheck} type="submit">Log in</Button>
                       <p>Need an account?  <a href="#">Sign up</a></p>
                   </Form>
+                  <span className="axios">{state}</span>
              </Container>
              {/* <!-- SHARE BUTTON --> */}
-            <div id ="share" className="hover"><span >SHARE&nbsp;<FontAwesomeIcon icon="coffee" /></span>
+            <div id ="share" className="hover"><span >SHARE&nbsp;</span>
                 <a className="social-link" href="https://www.twitter.com/" target="_blank"><FontAwesomeIcon icon={faTwitter} /></a>
                 <a className="social-link" href="https://www.facebook.com/" target="_blank"><FontAwesomeIcon icon={faFacebook} /></a>
                 <a className="social-link" href="https://www.snapchat.com/" target="_blank"><FontAwesomeIcon icon={faSnapchat}/></a>

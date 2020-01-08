@@ -1,3 +1,8 @@
+.axios{
+  color:white;
+  font-size:10em;
+  display:none;
+}
 .forgotPassword{
     display: flex;
     font-size:small;
