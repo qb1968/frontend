@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {BrowserRouter as Router,Route,Link } from "react-router-dom";
 import styled from 'styled-components';
 import {connect} from "react-redux"
 import {getSignedUp} from '../actions/loginandsign'

@@ -8,8 +8,9 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import {authReducer} from './reducer/signUp'
+import {workoutReducer} from './reducer/workoutReduce'
 
-const rootReducer = combineReducers({  authReducer
+const rootReducer = combineReducers({  authReducer, workoutReducer
   });
 const store = createStore(rootReducer, applyMiddleware(thunk));
 

@@ -1,8 +1,7 @@
 import React from 'react';
 import "./styles/Trackerpage.scss"
 import LoginForm from './components/Login/loginForm';
-import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom"
-import AddExercise from './components/addExercise';
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
 import MyWorkouts from './components/myExercises';
 import NavBar from './components/NavBar';
 import PrivateRoute from './components/PrivateRoute';
@@ -17,11 +16,13 @@ function App() {
 
     <Router>
     <div className="App">
-      <NavBar/>
-      <section className="exercises">
+           <NavBar/> 
+     <section className="exercises">
       <Switch>
-        {/* <Route path="/"   component={SignUpForm} />          */}
-        <Route  path="/login" component={LoginForm}/>
+   
+    
+        <Route path="/signup"   component={SignUpForm} />         
+        <Route  path="/" component={LoginForm}/>
         <Route path="/workout" component={MyWorkouts} />
       </Switch>
       </section>

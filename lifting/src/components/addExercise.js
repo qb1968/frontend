@@ -1,5 +1,27 @@
 import React, { useState } from "react"
 import axiosWithAuth from './axiosWithAuth'
+import styled from 'styled-components'
+
+export const Button = styled.button`
+    border-radius:25px;
+    border: none;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    outline: none;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    background-color: #222;
+    padding: 17px 60px;
+    margin: 0 auto;
+    margin-top:5%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.20);
+
+`
 
 
 const AddExercise = () => {
@@ -70,6 +92,7 @@ const AddExercise = () => {
         placeholder="Muscle target"
         onChange={handleChange}
       />
+      <Button>Submit</Button>
         </form>
     )
 

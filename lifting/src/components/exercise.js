@@ -1,14 +1,18 @@
 import React from 'react';
 
-const Exercise = ({data}) => {
+
+
+
+const Exercise = (workouts) => {
+
     return (
         <div>
-            <h2>{data.name}</h2>
-            <p>Muscle focus: {data.body_region}</p>
-            <p>Amount Lifted: {data.amount_lifted}</p>
-            <p>Reps: {data.reps}</p>
-            <p>Sets: {data.sets}</p>
-            <p>Date Recorded: {data.date}</p>
+            <h2>{workouts.name}</h2>
+            <p>Muscle focus: {workouts.body_region}</p>
+            <p>Amount Lifted: {workouts.amount_lifted}</p>
+            <p>Reps: {workouts.reps}</p>
+            <p>Sets: {workouts.sets}</p>
+            <p>Date Recorded: {workouts.date}</p>
         </div>
     )
 }

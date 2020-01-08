@@ -1,4 +1,3 @@
-import axiosWithAuth from "axios";
 import axios from "axios";
 
 
@@ -23,6 +22,7 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 
 export const getLoggedIn = info => dispatch => {
   dispatch({ type: LOGIN_START });
+  console.log(info)
   return axios
     .post("https://weightlifting-journal.herokuapp.com/auth/login", info)
     .then(res => {

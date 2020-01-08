@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axiosWithAuth from './axiosWithAuth'
 import AddExercise from './addExercise'
+import Exercise from './exercise'
 
 
 
@@ -9,18 +10,18 @@ import AddExercise from './addExercise'
 
 const MyWorkouts = () => {
     const [workout, setWorkout] = useState([])
-
     useEffect(()=>{
         axiosWithAuth()
-        .get("/exercises")
+        .get('/exercises')
         .then(res => setWorkout(res.data))
-        .catch(e => console.error(e))
+        .catch(err => console.error(err))
     })
 
     return (
         <div>
             <h3>Add Exercise</h3>
-            <AddExercise />   
+            <AddExercise />
+            <Exercise />
         </div>
     )
 }
