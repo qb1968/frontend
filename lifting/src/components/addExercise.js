@@ -44,7 +44,7 @@ const AddExercise = () => {
       />
       <input
         type="text"
-        name="weight"
+        name="amount_lifted"
         value={exerciseData.amount_lifted}
         placeholder="Weight"
         onChange={handleChange}
