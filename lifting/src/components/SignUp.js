@@ -93,8 +93,8 @@ function SignUpForm(props){
             <Div>
                 <Form onSubmit={handleSubmit} >
                       <h3>Sign Up</h3>
-                      <Input id="signup" type="text" placeholder="Username" name="username" onChange={handleChanges} />
-                      <Input id="signup" type="password" placeholder=" Password" name="Password" onChange={handleChanges} />
+                      <Input  type="text" placeholder="Username" name="username" onChange={handleChanges} />
+                      <Input  type="password" placeholder=" Password" name="Password" onChange={handleChanges} />
                       <Button type="submit">Sign Up</Button>
                       {/* <div>Already a member Login <aHere</div> */}
                   </Form>
