@@ -1,6 +1,7 @@
-import React from 'react';
-import {BrowserRouter as Router,Route,Link } from "react-router-dom";
+import React, {useState} from 'react';
 import styled from 'styled-components';
+import {connect} from "react-redux"
+import {getSignedUp} from '../actions/loginandsign'
 
  const Container=styled.div`
    width:100%;
@@ -61,16 +62,39 @@ const Button=styled.button`
     
 `
 
-function SignUpForm(){
+function SignUpForm(props){
+        const [user, setUser] = useState({
+          username: "",
+          password: ""
+        });
+
+        const handleChanges = e => {
+            setUser({
+              ...user,
+              [e.target.id]: e.target.value
+            });
+          };
+
+          const handleSubmit = e => {
+            e.preventDefault();
+              props.getSignedUp({ username: user.username, password: user.password });
+              props.history.push("/login");
+              setUser({
+                ...user,
+                username: "",
+                password: "",
+              });
+            
+        }
+
+
     return(
          <Container>
             <Div>
-                <Form>
+                <Form onSubmit={handleSubmit} >
                       <h3>Sign Up</h3>
-                     
-                      <Input id="signup" type="text" placeholder="Username" name="username"/>
-                      <Input id="signup" type="text" placeholder=" Enter email " name="email"/>
-                      <Input id="signup" type="password" placeholder=" Password" name="Password"/>
+                      <Input id="signup" type="text" placeholder="Username" name="username" onChange={handleChanges} />
+                      <Input id="signup" type="password" placeholder=" Password" name="Password" onChange={handleChanges} />
                       <Button type="submit">Sign Up</Button>
                       {/* <div>Already a member Login <aHere</div> */}
                   </Form>
@@ -79,4 +103,9 @@ function SignUpForm(){
     )
 }
 
-export default SignUpForm;
+const mapStatetoProps = state => {
+    return state;
+}
+
+export default connect(mapStatetoProps, {getSignedUp})(SignUpForm);
+
