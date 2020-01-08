@@ -2,6 +2,9 @@ import React from 'react';
 import {BrowserRouter as Router,Route,Link } from "react-router-dom";
 import styled from 'styled-components';
 import "./styles.css"
+import ReactDOM from 'react-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faTwitter,faFacebook,faInstagram,faSnapchat} from '@fortawesome/free-brands-svg-icons'
 const Main=styled.div`
     width:100%;
     background-image:url("https://images.unsplash.com/photo-1507398941214-572c25f4b1dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1266&q=80");
@@ -21,7 +24,8 @@ const Container=styled.div`
     align-items:center;
     align-content:center;
     width:30em;
-    height:35vh;
+    height:40vh;
+    
 `
 const Form=styled.form`
     display:flex;
@@ -34,7 +38,7 @@ const Form=styled.form`
 `
 const Input=styled.input`
     margin:5%;
-    width:20em;
+    width:19em;
     height:3vh;
     border-radius:50px;
 `
@@ -50,7 +54,7 @@ const Button=styled.button`
     position: relative;
     color: #fff;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 0.9em;
     background-color: #222;
     padding: 17px 60px;
     margin: 0 auto;
@@ -67,9 +71,21 @@ function LoginForm(props){
                       <label htmlFor="login"><h4>Username</h4></label>
                       <Input id="login" type="text" placeholder=" Enter email or Username" name="username"/>
                       <Input id="login" type="password" placeholder=" Password" name="Password"/>
+                      <div className="forgotPassword">
+                        <input id="remember" type="checkbox"/><span>Remember me</span><a href="#">Forgot Password?</a>
+                     </div>
                       <Button type="submit">Log in</Button>
+                      <p>Need an account?  <a href="#">Sign up</a></p>
                   </Form>
              </Container>
+             {/* <!-- SHARE BUTTON --> */}
+            <div id ="share" className="hover"><span >SHARE&nbsp;<FontAwesomeIcon icon="coffee" /></span>
+                <a className="social-link" href="https://www.twitter.com/" target="_blank"><FontAwesomeIcon icon={faTwitter} /></a>
+                <a className="social-link" href="https://www.facebook.com/" target="_blank"><FontAwesomeIcon icon={faFacebook} /></a>
+                <a className="social-link" href="https://www.snapchat.com/" target="_blank"><FontAwesomeIcon icon={faSnapchat}/></a>
+                <a className="social-link" href="https://www.instagram.com/" target="_blank"><FontAwesomeIcon icon={faInstagram} /></a>
+            </div> 
+    {/* <!-- end of share button --> */}
         </Main>
     )
 }
