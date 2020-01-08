@@ -1,5 +1,6 @@
 import React from "react"
 import {BrowserRouter as Link} from "react-router-dom"
+import LoginForm from "./Login/loginForm";
 
 const NavBar = () => {
     return (
@@ -10,7 +11,7 @@ const NavBar = () => {
                     <Link to=''>Marketing</Link>
                 </div>
                 <div>
-                    <Link to='/login'>Login</Link>
+                    <Link to='/login' component={LoginForm}>Login</Link>
                 </div>
             </nav>
         </div>
