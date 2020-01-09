@@ -7,16 +7,21 @@ import axiosWithAuth from './axiosWithAuth';
 
 const Exercise = ({workout}) => {
     console.log(workout)
+
+
     const editWorkout = e => {
         e.preventDefault();
         axiosWithAuth()
-        .put('/exercies/:id')
+        .put(`/exercises/${workout.id}`)
       };
 
       const deleteWorkout = e => {
-        e.preventDefault();
         axiosWithAuth()
-          .delete(`/exercies/:id/${workout.id}`)
+          .delete(`/exercises/${workout.id}`)
+          .then(res => console.log(res))
+          .catch(err => {
+              console.log(err)
+          })
       }
       
 
@@ -24,12 +29,13 @@ const Exercise = ({workout}) => {
         <div className='card'>
             <h2>{workout.name}</h2>
             <p>Muscle focus: {workout.body_region}</p>
-            <p>Amount Lifted: {workout.amount_lifted}</p>
+            <p>Amount Lifted: {workout.amount_lifted} LB</p>
             <p>Reps: {workout.reps}</p>
             <p>Sets: {workout.sets}</p>
             <p>Recorded: {workout.date}</p>
             <button onClick={editWorkout}>Edit</button>
-            <button  onClick={deleteWorkout}>Delete</button>
+            <button  onClick={e => {e.stopPropagation();
+                deleteWorkout(workout.id)}}>Delete</button>
         </div>
     )
 }

@@ -25,15 +25,18 @@ const MyWorkouts = () => {
 
     return (
         <div>
-            <h3>Add Exercise</h3>
-            <AddExercise />
-            <h3>Current exercises</h3>
+            <div className="addexercise"> 
+                <h3>Add Exercise</h3>
+                <AddExercise />
+            </div>
+            <h3>Current exercises</h3> 
+            <div className='list'>
           {workout.map(out => (
-              <div  className='list'key={out.id}>
+              <div  key={out.id}>
                   <Exercise workout={out} />
               </div>
           ))}
-            
+           </div> 
         </div>
     )
 }
