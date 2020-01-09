@@ -7,9 +7,11 @@ export const SIGNUP_FAIL = "SIGNUP_FAIL";
 
 export const getSignedUp = user => dispatch => {
   dispatch({ type: SIGNUP_START });
+  console.log(user)
   return axios
     .post("https://weightlifting-journal.herokuapp.com/auth/register", user)
     .then(res => {
+      localStorage.setItem("token", res.data.payload);
       dispatch({ type: SIGNUP_SUCCESS, payload: res.data });
       console.log(res);
     });

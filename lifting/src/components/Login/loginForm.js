@@ -83,7 +83,6 @@ function LoginForm(props){
     const onSubmit = e => {
     e.preventDefault();
     props.getLoggedIn(userCredentials)
-    axiosWithAuth()
     props.history.push("/workout");
 
 }
