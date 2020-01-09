@@ -84,10 +84,10 @@ function SignUpForm(props){
                 username: "",
                 password: "",
               });  
-        props.history.push("/login");
+        props.history.push("/workout");
       
             
-        }
+      }
 
 
     return(
@@ -95,8 +95,8 @@ function SignUpForm(props){
             <Div>
                 <Form onSubmit={handleSubmit} >
                       <h3>Sign Up</h3>
-                      <Input  type="text" placeholder="Username" name="username" value={user.username} onChange={handleChanges} />
-                      <Input  type="password" placeholder=" Password" name="password" value={user.password} onChange={handleChanges} />
+                      <Input id='username' type="text" placeholder="Username" name="username" value={user.username} onChange={handleChanges} />
+                      <Input id='password' type="password" placeholder=" Password" name="password" value={user.password} onChange={handleChanges} />
                       <Button type="submit">Sign Up</Button>
                       <Link to="/login">Already Registered?</Link>
                   </Form>

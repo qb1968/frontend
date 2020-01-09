@@ -20,8 +20,8 @@ function App() {
      <section className="exercises">
       <Switch>
         <Route path="/signup"   component={SignUpForm} />         
-        <Route  path="/" component={LoginForm}/>
-        <Route path="/workout" component={MyWorkouts} />
+        <Route  path="/login" component={LoginForm}/>
+        <PrivateRoute path="/workout" component={MyWorkouts} />
       </Switch>
       </section>
 
