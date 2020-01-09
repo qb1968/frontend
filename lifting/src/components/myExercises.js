@@ -10,18 +10,31 @@ import Exercise from './exercise'
 
 const MyWorkouts = () => {
     const [workout, setWorkout] = useState([])
-    // useEffect(()=>{
-    //     axiosWithAuth()
-    //     .get('/exercises')
-    //     .then(res => setWorkout(res.data))
-    //     .catch(err => console.error(err))
-    // })
+    useEffect(() => {
+        axiosWithAuth()
+            .get('/exercises')
+            .then( res => {
+                console.log(res)
+                setWorkout(res.data)
+            })
+            .catch( err => {
+                console.log(err)
+            })
+}, []);
+
+console.log(workout)
 
     return (
         <div>
             <h3>Add Exercise</h3>
             <AddExercise />
-            <Exercise />
+            <h3>Current exercises</h3>
+          {workout.map(out => (
+              <div  className='list'key={out.id}>
+                  <Exercise workout={out} />
+              </div>
+          ))}
+            
         </div>
     )
 }
