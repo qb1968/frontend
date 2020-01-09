@@ -1,6 +1,8 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import axiosWithAuth from './axiosWithAuth'
 import styled from 'styled-components'
+import {connect} from 'react-redux'
+import {addWorkout} from '../actions/workout'
 
 export const Button = styled.button`
     border-radius:25px;
@@ -24,8 +26,8 @@ export const Button = styled.button`
 `
 
 
-const AddExercise = () => {
-    const [exerciseData, setExerciseData] = useState({name:'', amount_lifted:'', reps: '', body_region:'', sets: '', date: '' })
+const AddExercise = (props) => {
+    const [exerciseData, setExerciseData] = useState({name:'', user_id: '', amount_lifted:'', reps: '', body_region:'', sets: '', date: '' })
 
     const handleChange = e => {
         setExerciseData(
@@ -38,13 +40,12 @@ const AddExercise = () => {
 
     const onSubmit = e => {
         e.preventDefault()
-        axiosWithAuth()
-        .post('/exercises/', exerciseData )
-        .then(res => {
-            setExerciseData(
+        props.addWorkout(exerciseData)
+          setExerciseData(
                 {
                     ...exerciseData,
-                    name:'', 
+                    name:'',
+                    user_id: props.id, 
                     amount_lifted:'', 
                     reps: '', 
                     body_region:'', 
@@ -52,12 +53,19 @@ const AddExercise = () => {
                     date: Date.now 
                 }
             )
-        })
 
     }
+    
+    useEffect(()=>{
+      axiosWithAuth()
+      .get('/exercises')
+    }) 
+
+    console.log(exerciseData)
+
     return(
         <form onSubmit={onSubmit}>
-                  <input
+        <input
         type="text"
         name="name"
         value={exerciseData.name}
@@ -87,8 +95,8 @@ const AddExercise = () => {
       />
         <input
         type="text"
-        name="body_Region"
-        value={exerciseData.sets}
+        name="body_region"
+        value={exerciseData.body_region}
         placeholder="Muscle target"
         onChange={handleChange}
       />
@@ -98,4 +106,9 @@ const AddExercise = () => {
 
 }
 
-export default AddExercise
+
+const mapStateToProps = state => {
+  return state;
+};
+
+export default connect(mapStateToProps, { addWorkout })(AddExercise);

@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
-import {BrowserRouter as  Route, Link} from "react-router-dom";
+import {BrowserRouter as Link} from "react-router-dom";
 import styled from 'styled-components';
 import "./styles.css"
-import SignUpForm from '../SignUp';
-import axiosWithAuth from '../axiosWithAuth'
 import {connect} from "react-redux"
 import {getLoggedIn} from '../../actions/loginandsign'
 

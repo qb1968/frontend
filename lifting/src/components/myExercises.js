@@ -22,7 +22,6 @@ const MyWorkouts = () => {
             })
 }, []);
 
-console.log(workout)
 
     return (
         <div>
