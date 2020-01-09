@@ -1,4 +1,5 @@
 import axios from "axios";
+import axiosWithAuth from "../components/axiosWithAuth";
 
 
 export const SIGNUP_START = "SIGNUP_START";
@@ -11,7 +12,8 @@ export const getSignedUp = user => dispatch => {
   return axios
     .post("https://weightlifting-journal.herokuapp.com/auth/register", user)
     .then(res => {
-      localStorage.setItem("token", res.data.payload);
+      console.log(res)
+      localStorage.setItem("token", res.data.token);
       dispatch({ type: SIGNUP_SUCCESS, payload: res.data });
       console.log(res);
     });
@@ -28,7 +30,7 @@ export const getLoggedIn = info => dispatch => {
   return axios
     .post("https://weightlifting-journal.herokuapp.com/auth/login", info)
     .then(res => {
-      localStorage.setItem("token", res.data.payload);
+      localStorage.setItem("token", res.data.token);
       dispatch({ type: LOGIN_SUCCESS, payload: res.data.payload });
       console.log(res);
     })

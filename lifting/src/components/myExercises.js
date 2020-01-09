@@ -21,7 +21,7 @@ const MyWorkouts = () => {
         <div>
             <h3>Add Exercise</h3>
             <AddExercise />
-            {/* <Exercise /> */}
+            <Exercise />
         </div>
     )
 }
