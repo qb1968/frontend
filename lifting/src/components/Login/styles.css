@@ -5,10 +5,27 @@
 }
 .forgotPassword{
     display: flex;
+    justify-content: center;
     font-size:small;
+    width:100%;
+    margin-left:10%;
+}
+#password{
+  margin:5% 5% 0% 5%;
+}
+.forgotPassword input{
+  margin-top:0.8em;
+  width:4%;
+}
+.forgotPassword span{
+  padding:2% 0% 0% 0%;
 }
 .forgotPassword a{
-    margin-left:2em;
+    width:18em;
+    padding: 2% 0% 0% 0%;
+}
+.sc-bdVaJa{
+  height: 100vh;
 }
 /* ///////////////////////SHARE/FOLLOW BUTTONS////////////////////////// */
 #share{

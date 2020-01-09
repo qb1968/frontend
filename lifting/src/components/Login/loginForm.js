@@ -20,8 +20,6 @@ const Main=styled.div`
     font-family:Helvetica;
 `
 const Container=styled.div`
-    border-radius:20px;
-    background-color:#ffffffa6;
     justify-content: center;
     align-items:center;
     align-content:center;
@@ -31,16 +29,17 @@ const Container=styled.div`
 `
 const Form=styled.form`
     display:flex;
+    background-color:#ffffffa6;
+    border-radius: 20px
     flex-direction:column;
-    width:50%;
-    padding-left:25%;
+    width:100%;
     justify-content:center;
     align-items:center;
     
 `
 const Input=styled.input`
     margin:5%;
-    width:19em;
+    width:18em;
     height:3vh;
     border-radius:50px;
 `
@@ -59,15 +58,14 @@ const Button=styled.button`
     font-size: 0.9em;
     background-color: #222;
     padding: 17px 60px;
-    margin: 0 auto;
-    margin-top:5%;
+    margin: 10% 5% 0% 5%;
     box-shadow: 0 5px 15px rgba(0,0,0,0.20);
 `
 
 function LoginForm(props){
     const [state,setState]=useState();
-    const [log,setLog]=useState();
-    const [pass,setPass]=useState();
+    const [log,setLog]=useState('');
+    const [pass,setPass]=useState('');
     const [valid,setValid]=useState();
     useEffect(() => {
            axios
@@ -92,7 +90,11 @@ function LoginForm(props){
         console.log(pass);
         if(!(log.includes("@"))){
             setValid('Invalid Input!');
+        }else if(!(log.includes('.'))){
+            setValid('Invalid Input!');
         }else if(pass.length<8){
+            setValid('Invalid Input!');
+        }else if(log.length<8){
             setValid('Invalid Input!');
         }else{
             setValid('');
@@ -105,13 +107,13 @@ function LoginForm(props){
                       <h3>Log In to Your Account</h3>
                       <label htmlFor="login"><h4>Username</h4></label>
                       <Input onChange={UserValidations} id="login" type="text" placeholder="&nbsp;Enter email or Username" name="username"/>
-                      <Input onChange={PasswordValidations} id="login" type="password" placeholder="&nbsp;Password" name="Password"/>
-                      <div style={{fontSize:12,color:"red"}}>{valid}</div>
+                      <Input onChange={PasswordValidations} id="password" type="password" placeholder="&nbsp;Password" name="Password"/>
+                      <div style={{fontSize:16,color:"red"}}>{valid}</div>
                       <div className="forgotPassword">
                         <input id="remember" type="checkbox"/><span>Remember me</span><a href="#">Forgot Password?</a>
                      </div>
                       <Button onClick={validationCheck} type="submit">Log in</Button>
-                      <p>Need an account?  <a href="#">Sign up</a></p>
+                      <p>Need an account?&nbsp;&nbsp;<a href="#">Sign up</a></p>
                   </Form>
                   <span className="axios">{state}</span>
              </Container>
