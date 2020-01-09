@@ -1,9 +1,14 @@
 import React from 'react';
 import {BrowserRouter as Router,Route,Link } from "react-router-dom";
-import styled from 'styled-components';
+import styled,{keyframes} from 'styled-components';
+
+import {fadeIn } from 'react-animations';
+
+let fadeAnimation = keyframes`${fadeIn}`;
 
  const Container=styled.div`
    width:100%;
+   height:100vh;
     background-image:url("https://images.unsplash.com/photo-1544033527-b192daee1f5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
      background-position:center;
      background-repeat:repeat;
@@ -15,22 +20,23 @@ import styled from 'styled-components';
      
 `
 const Div=styled.div`
-    border-radius:50px;
+    border-radius:75px;
     background-color:#ffffffa6;
     justify-content: center;
     align-items:center;
     align-content:center;
     width:50em;
-    height:100vh;
-    margin:auto;
+    
+    
 `
 const Form=styled.form`
     display:flex;
     flex-direction:column;
     width:50%;
-    padding-left:20%;
+    padding-left:25%;
     justify-content:space-evenly;
     align-items:center;
+    color:black
     
 `
 const Input=styled.input`
@@ -39,6 +45,7 @@ const Input=styled.input`
     height:6vh;
     border-radius:20px;
     font-size:20px;
+    color:black
 
 `
 const Button=styled.button`
@@ -60,19 +67,25 @@ const Button=styled.button`
     margin-top:5%;
     
 `
+const Word=styled.h3`
+animation:5s ${fadeAnimation}
+font-size:55px;
+text-decoration: underline;
+`
 
 function SignUpForm(){
     return(
          <Container>
             <Div>
+            
                 <Form>
-                      <h3>Sign Up</h3>
+                      <Word>Why wait ? Sign Up Now!</Word>
                      
                       <Input id="signup" type="text" placeholder="Username" name="username"/>
-                      <Input id="signup" type="text" placeholder=" Enter email " name="email"/>
+                      
                       <Input id="signup" type="password" placeholder=" Password" name="Password"/>
                       <Button type="submit">Sign Up</Button>
-                      {/* <div>Already a member Login <aHere</div> */}
+                     <p> Already registered <Link href="#">Login?</Link></p>
                   </Form>
              </Div>
          </Container>
