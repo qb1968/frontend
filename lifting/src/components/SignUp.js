@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
+import {Link} from 'react-router-dom'
 import {connect} from "react-redux"
 import {getSignedUp} from '../actions/loginandsign'
 
@@ -64,8 +65,8 @@ const Button=styled.button`
 
 function SignUpForm(props){
         const [user, setUser] = useState({
-          username: "",
-          password: ""
+          username: '',
+          password: ''
         });
 
         const handleChanges = e => {
@@ -77,13 +78,14 @@ function SignUpForm(props){
 
           const handleSubmit = e => {
             e.preventDefault();
-              props.getSignedUp({ username: user.username, password: user.password });
-              props.history.push("/login");
-              setUser({
+              props.getSignedUp(user);
+                    setUser({
                 ...user,
                 username: "",
                 password: "",
-              });
+              });  
+        props.history.push("/login");
+      
             
         }
 
@@ -93,10 +95,10 @@ function SignUpForm(props){
             <Div>
                 <Form onSubmit={handleSubmit} >
                       <h3>Sign Up</h3>
-                      <Input  type="text" placeholder="Username" name="username" onChange={handleChanges} />
-                      <Input  type="password" placeholder=" Password" name="Password" onChange={handleChanges} />
+                      <Input  type="text" placeholder="Username" name="username" value={user.username} onChange={handleChanges} />
+                      <Input  type="password" placeholder=" Password" name="password" value={user.password} onChange={handleChanges} />
                       <Button type="submit">Sign Up</Button>
-                      {/* <div>Already a member Login <aHere</div> */}
+                      <Link to="/login">Already Registered?</Link>
                   </Form>
              </Div>
          </Container>

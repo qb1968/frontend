@@ -19,8 +19,6 @@ function App() {
            <NavBar/> 
      <section className="exercises">
       <Switch>
-   
-    
         <Route path="/signup"   component={SignUpForm} />         
         <Route  path="/" component={LoginForm}/>
         <Route path="/workout" component={MyWorkouts} />
