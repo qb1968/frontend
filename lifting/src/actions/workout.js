@@ -7,8 +7,8 @@ export const ADD_WORKOUT_FAILURE = "ADD_WORKOUT_FAILURE";
 
 export const addWorkout = values => dispatch => {
     dispatch({type: ADD_WORKOUT_START});
-    axiosWithAuth
-    .post("https://weightlifting-journal.herokuapp.com/exercies/", values)
+    axiosWithAuth()
+    .post("https://weightlifting-journal.herokuapp.com/exercises/", values)
     .then(response => {
         console.log(response)
         dispatch({type: ADD_WORKOUT_SUCCESS, payload: values});

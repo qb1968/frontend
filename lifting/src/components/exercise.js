@@ -1,35 +1,35 @@
-import React, {useState, useEffect } from 'react';
+import React from 'react';
 import axiosWithAuth from './axiosWithAuth';
-import axios from 'axios'
 
 
 
 
-const Exercise = (workouts) => {
-    const [workout, setWorkout] = useState([]);
 
-    useEffect(() => {
+const Exercise = ({workout}) => {
+    console.log(workout)
+    const editWorkout = e => {
+        e.preventDefault();
         axiosWithAuth()
-            .get('/exercises')
-            .then( res => {
-                console.log(res)
-                setWorkout(res.data)
-            })
-            .catch( err => {
-                console.log(err)
-            })
-}, []);
+        .put('/exercies/:id')
+      };
 
-
+      const deleteWorkout = e => {
+        e.preventDefault();
+        axiosWithAuth()
+          .delete(`/exercies/:id/${workout.id}`)
+      }
+      
 
     return (
-        <div>
-            <h2>{workouts.name}</h2>
-            <p>Muscle focus: {workouts.body_region}</p>
-            <p>Amount Lifted: {workouts.amount_lifted}</p>
-            <p>Reps: {workouts.reps}</p>
-            <p>Sets: {workouts.sets}</p>
-            <p>Date Recorded: {workouts.date}</p>
+        <div className='card'>
+            <h2>{workout.name}</h2>
+            <p>Muscle focus: {workout.body_region}</p>
+            <p>Amount Lifted: {workout.amount_lifted}</p>
+            <p>Reps: {workout.reps}</p>
+            <p>Sets: {workout.sets}</p>
+            <p>Recorded: {workout.date}</p>
+            <button onClick={editWorkout}>Edit</button>
+            <button  onClick={deleteWorkout}>Delete</button>
         </div>
     )
 }
