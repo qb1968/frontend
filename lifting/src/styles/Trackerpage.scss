@@ -51,8 +51,38 @@ textarea {
 
 .card {
     border: #A9A9A9 solid 3px;
-    padding: 4%;
-    margin: 4%;
+    padding: 8%;
+    margin: 6%;
     border-radius: 15px;
+    background: #e8d4b4;
 }
 
+.button {
+    border-radius:25px;
+    border: none;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    outline: none;
+    overflow: hidden;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    background-color: #222;
+    padding: 17px 60px;
+    margin: 0 auto;
+    margin-top:5%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.20);
+}
+
+.list {
+    display: flex;
+    flex-flow: row wrap;
+    
+}
+
+.addexercise{
+    width: 50%;
+    margin: auto;
+}

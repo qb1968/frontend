@@ -1,5 +1,6 @@
 import React from 'react';
 import axiosWithAuth from './axiosWithAuth';
+import { Link } from 'react-router-dom';
 
 
 
@@ -7,28 +8,35 @@ import axiosWithAuth from './axiosWithAuth';
 
 const Exercise = ({workout}) => {
     console.log(workout)
-    const editWorkout = e => {
-        e.preventDefault();
-        axiosWithAuth()
-        .put('/exercies/:id')
-      };
+
 
       const deleteWorkout = e => {
+        axiosWithAuth()
+          .delete(`/exercises/${workout.id}`)
+          .then(res => console.log(res))
+          .catch(err => {
+              console.log(err)
+          })
+      }
+      
+      const submitForm = e => {
         e.preventDefault();
         axiosWithAuth()
-          .delete(`/exercies/:id/${workout.id}`)
-      }
+            .put(`/exercises/${workout.id}`, workout)
+            .then(res => {
+            })
+    }
       
 
     return (
         <div className='card'>
             <h2>{workout.name}</h2>
             <p>Muscle focus: {workout.body_region}</p>
-            <p>Amount Lifted: {workout.amount_lifted}</p>
+            <p>Amount Lifted: {workout.amount_lifted} LB</p>
             <p>Reps: {workout.reps}</p>
             <p>Sets: {workout.sets}</p>
             <p>Recorded: {workout.date}</p>
-            <button onClick={editWorkout}>Edit</button>
+            <Link to='/update'>Edit</Link>
             <button  onClick={deleteWorkout}>Delete</button>
         </div>
     )

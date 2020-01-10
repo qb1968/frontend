@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axiosWithAuth from './axiosWithAuth'
 import AddExercise from './addExercise'
 import Exercise from './exercise'
+import {Link} from "react-router-dom"
 
 
 
@@ -23,17 +24,23 @@ const MyWorkouts = () => {
 }, []);
 
 
+
     return (
         <div>
-            <h3>Add Exercise</h3>
-            <AddExercise />
-            <h3>Current exercises</h3>
+            <div className="addexercise"> 
+                <h3>Add Exercise</h3>
+                <AddExercise />
+            </div>
+            <h3>Current exercises</h3> 
+            <div className='list'>
           {workout.map(out => (
-              <div  className='list'key={out.id}>
+              <div  key={out.id}>
+                  <Link to={`/exercise/${out.id}`}>
                   <Exercise workout={out} />
+                  </Link>
               </div>
           ))}
-            
+           </div> 
         </div>
     )
 }

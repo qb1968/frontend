@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {BrowserRouter as Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 import styled from 'styled-components';
 import "./styles.css"
 import {connect} from "react-redux"
