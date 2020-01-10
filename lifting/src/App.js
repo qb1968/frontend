@@ -6,6 +6,7 @@ import MyWorkouts from './components/myExercises';
 import NavBar from './components/NavBar';
 import PrivateRoute from './components/PrivateRoute';
 import SignUpForm from './components/SignUp';
+import UpdateWorkout from './components/UpdateExercises';
 
 
 
@@ -19,6 +20,7 @@ function App() {
            <NavBar/> 
      <section className="exercises">
       <Switch>
+        <Route path="/update" component={UpdateWorkout}/>
         <Route path="/signup"   component={SignUpForm} />         
         <Route  path="/login" component={LoginForm}/>
         <PrivateRoute path="/workout" component={MyWorkouts} />

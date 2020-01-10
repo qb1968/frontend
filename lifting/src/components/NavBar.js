@@ -7,7 +7,7 @@ const NavBar = () => {
             <h1 className='title'>Weight Lifting Tracker</h1>
             <nav className="links">
                 <div>
-                    <Link to='/'>Marketing</Link>
+                   <a href="https://loving-lovelace-65d935.netlify.com/#">Marketing</a>
                 </div>
                 <div>
                     <Link to='/login'>Login</Link>

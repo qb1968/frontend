@@ -1,5 +1,6 @@
 import React from 'react';
 import axiosWithAuth from './axiosWithAuth';
+import { Link } from 'react-router-dom';
 
 
 
@@ -8,12 +9,6 @@ import axiosWithAuth from './axiosWithAuth';
 const Exercise = ({workout}) => {
     console.log(workout)
 
-
-    const editWorkout = e => {
-        e.preventDefault();
-        axiosWithAuth()
-        .put(`/exercises/${workout.id}`)
-      };
 
       const deleteWorkout = e => {
         axiosWithAuth()
@@ -33,9 +28,8 @@ const Exercise = ({workout}) => {
             <p>Reps: {workout.reps}</p>
             <p>Sets: {workout.sets}</p>
             <p>Recorded: {workout.date}</p>
-            <button onClick={editWorkout}>Edit</button>
-            <button  onClick={e => {e.stopPropagation();
-                deleteWorkout(workout.id)}}>Delete</button>
+            <Link to='/update'>Edit</Link>
+            <button  onClick={deleteWorkout}>Delete</button>
         </div>
     )
 }
