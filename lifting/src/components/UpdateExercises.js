@@ -3,6 +3,14 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom"
 import axiosWithAuth from './axiosWithAuth'
+import styled from "styled-components"
+
+const Word = styled.h2`
+font-size: 20px
+background-color:grey
+margin:auto
+text-align:center
+`
 
 const UpdateWorkout = (props) => {
     const [workout, setWorkout] = useState({name:'', user_id: '', amount_lifted:'', reps: '', body_region:'', sets: '', date: '' });
@@ -39,7 +47,7 @@ console.log(workout)
 
     return (
         <form onSubmit={submitForm}>
-            <h2>UPDATE WORKOUT</h2>
+            <Word>UPDATE WORKOUT</Word>
             <div>
                 <input
                     id='name'

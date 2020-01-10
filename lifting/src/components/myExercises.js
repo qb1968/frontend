@@ -3,9 +3,15 @@ import axiosWithAuth from './axiosWithAuth'
 import AddExercise from './addExercise'
 import Exercise from './exercise'
 import {Link} from "react-router-dom"
+import styled from "styled-components";
 
-
-
+const Word = styled.h2`
+font-size: 20px
+background-color:grey
+margin:auto
+text-align:center
+height:3vh
+`
 
 
 
@@ -28,10 +34,10 @@ const MyWorkouts = () => {
     return (
         <div>
             <div className="addexercise"> 
-                <h3>Add Exercise</h3>
+                <Word>Add Exercise</Word>
                 <AddExercise />
             </div>
-            <h3>Current exercises</h3> 
+            <Word>Current exercises</Word> 
             <div className='list'>
           {workout.map(out => (
               <div  key={out.id}>

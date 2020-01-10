@@ -23,7 +23,7 @@ const Div=styled.div`
     align-items:center;
     align-content:center;
     width:50em;
-    height:100vh;
+   
     margin:auto;
 `
 const Form=styled.form`

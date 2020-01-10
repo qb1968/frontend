@@ -1,10 +1,9 @@
 .App {
-background-color: #FFA07A;
-min-height: 100vh;
+
 display: flex;
-flex-flow: wrap column;
-
-
+flex-direction: column;
+justify-content: space-evenly;
+margin: auto;
 }
 
 .exercises {
@@ -19,9 +18,9 @@ textarea {
   width: 100%;
   display: block;
   color: black;
-  border: 2px solid #A9A9A9
+  border: 2px solid #A9A9A9;
 
-  ;
+  
 }
 
 
@@ -29,7 +28,7 @@ textarea {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    background-color: #e8d4b4 ;
+    background-color: #959595fb ;
     
 
 }
@@ -50,11 +49,12 @@ textarea {
 }
 
 .card {
-    border: #A9A9A9 solid 3px;
+    border: rgb(14, 13, 13) solid 3px;
     padding: 8%;
     margin: 6%;
     border-radius: 15px;
-    background: #e8d4b4;
+    background: #d1cfcc;
+    align-items: center;
 }
 
 .button {
@@ -73,16 +73,19 @@ textarea {
     padding: 17px 60px;
     margin: 0 auto;
     margin-top:5%;
+    margin-bottom:5%;
     box-shadow: 0 5px 15px rgba(0,0,0,0.20);
 }
 
 .list {
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-evenly;
     
 }
 
 .addexercise{
-    width: 50%;
-    margin: auto;
+    width: 75%;
+    
+    align-content: center;
 }
