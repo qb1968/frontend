@@ -6,15 +6,15 @@ import axiosWithAuth from './axiosWithAuth'
 
 const UpdateWorkout = (props) => {
     const [workout, setWorkout] = useState({name:'', user_id: '', amount_lifted:'', reps: '', body_region:'', sets: '', date: '' });
-    useEffect(() => {
-        axiosWithAuth()
-            .get(`/exercises`)
-            .then(res => {
-                console.log(res)
-                setWorkout(res.data)
-            })
-            .catch(err => console.log(err))
-    }, [])
+    // useEffect(() => {
+    //     axiosWithAuth()
+    //         .get(`/exercises/`)
+    //         .then(res => {
+    //             console.log(res)
+    //             setWorkout(res.data)
+    //         })
+    //         .catch(err => console.log(err))
+    // }, [])
 
 console.log(workout)
 
@@ -29,15 +29,12 @@ console.log(workout)
     const submitForm = e => {
         e.preventDefault();
         axiosWithAuth()
-            .put(`/exercises/${workout.id}`, workout)
+            .put(`/exercises/${props.exerciseid}`, workout)
             .then(res => {
-                props.history.push("/workout")
-                setWorkout(res.data)
+                // props.history.push("/workout")
+                console.log(res)
+                // setWorkout(res.data)
             })
-    }
-
-    if (!workout){
-        return <div>Loading workout information...</div>
     }
 
     return (
@@ -48,7 +45,6 @@ console.log(workout)
                     id='name'
                     label="Workout Name"
                     margin="normal"
-                    variant="outlined"
                     onChange={handleChanges}
                     name="name"
                     value={workout.name}
@@ -59,48 +55,43 @@ console.log(workout)
                     id="body_region"
                     label="Muscle Region"
                     margin="normal"
-                    variant="outlined"
                     onChange={handleChanges}
-                    name="region"
+                    name="body_region"
                     value={workout.body_region}
                 />
             </div>
             <div>
                 <input 
-                    id="reps"
-                    label="Reps"
+                    id="amount_lifted"
+                    label="amount_lifted"
                     type="number"
                     margin="normal"
-                    variant="outlined"
+                    onChange={handleChanges}
+                    name="amount_lifted"
+                    value={workout.reps}
+                />
+            </div>
+            <div>
+                <input 
+                    id="reps"
+                    type="number"
+                    margin="normal"
                     onChange={handleChanges}
                     name="reps"
                     value={workout.reps}
                 />
             </div>
             <div>
-                <input 
-                    id="weight"
-                    label="lbs"
-                    type="number"
-                    margin="normal"
-                    variant="outlined"
-                    onChange={handleChanges}
-                    name="weight"
-                    value={workout.weight}
-                />
-            </div>
-            <div>
                 <input
-                    id="date"
-                    type="date"
+                    id="sets"
+                    type="text"
                     margin="normal"
-                    variant="outlined"
                     onChange={handleChanges}
-                    name="date"
-                    value={workout.date}
+                    name="sets"
+                    value={workout.sets}
                 />
             </div>
-            <button className="submit-button" onClick={submitForm}>Save</button>
+            <button  onClick={submitForm}>Save</button>
         </form>
     )
 }

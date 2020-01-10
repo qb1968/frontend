@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axiosWithAuth from './axiosWithAuth'
 import AddExercise from './addExercise'
 import Exercise from './exercise'
+import {Link} from "react-router-dom"
 
 
 
@@ -34,7 +35,9 @@ const MyWorkouts = () => {
             <div className='list'>
           {workout.map(out => (
               <div  key={out.id}>
+                  <Link to={`/exercise/${out.id}`}>
                   <Exercise workout={out} />
+                  </Link>
               </div>
           ))}
            </div> 

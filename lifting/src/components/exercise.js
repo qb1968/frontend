@@ -19,6 +19,14 @@ const Exercise = ({workout}) => {
           })
       }
       
+      const submitForm = e => {
+        e.preventDefault();
+        axiosWithAuth()
+            .put(`/exercises/${workout.id}`, workout)
+            .then(res => {
+            })
+    }
+      
 
     return (
         <div className='card'>
