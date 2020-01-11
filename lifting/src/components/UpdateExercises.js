@@ -49,11 +49,12 @@ console.log(workout)
         <form onSubmit={submitForm}>
             <Word>UPDATE WORKOUT</Word>
             <div>
-                <input
+                <input 
                     id='name'
                     label="Workout Name"
                     margin="normal"
                     onChange={handleChanges}
+                    
                     name="name"
                     value={workout.name}
                 />
@@ -76,7 +77,7 @@ console.log(workout)
                     margin="normal"
                     onChange={handleChanges}
                     name="amount_lifted"
-                    value={workout.reps}
+                    value={workout.amount_lifted}
                 />
             </div>
             <div>

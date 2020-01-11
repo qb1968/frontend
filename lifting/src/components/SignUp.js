@@ -1,8 +1,12 @@
 import React, {useState} from 'react';
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 import {Link} from 'react-router-dom'
 import {connect} from "react-redux"
 import {getSignedUp} from '../actions/loginandsign'
+import {fadeIn } from 'react-animations';
+
+let fadeAnimation = keyframes`${fadeIn}`;
+
 
  const Container=styled.div`
    width:100%;
@@ -17,7 +21,7 @@ import {getSignedUp} from '../actions/loginandsign'
      
 `
 const Div=styled.div`
-    border-radius:50px;
+    border-radius:30px;
     background-color:#ffffffa6;
     justify-content: center;
     align-items:center;
@@ -30,15 +34,15 @@ const Form=styled.form`
     display:flex;
     flex-direction:column;
     width:50%;
-    padding-left:20%;
+    padding-left:25%;
     justify-content:space-evenly;
     align-items:center;
     
 `
 const Input=styled.input`
     margin:5%;
-    width:30em;
-    height:6vh;
+    width:20em;
+    height:3vh;
     border-radius:20px;
     font-size:20px;
 
@@ -60,7 +64,13 @@ const Button=styled.button`
     padding: 17px 60px;
     margin: 0 auto;
     margin-top:5%;
+    margin-bottom:5%
     
+`
+const Word=styled.h3`
+animation:3s ${fadeAnimation}
+font-size:35px;
+text-decoration: underline;
 `
 
 function SignUpForm(props){
@@ -94,11 +104,12 @@ function SignUpForm(props){
          <Container>
             <Div>
                 <Form onSubmit={handleSubmit} >
-                      <h3>Sign Up</h3>
+                <Word> Why wait ? </Word>
+                <Word> Sign Up Now! </Word>
                       <Input id='username' type="text" placeholder="Username" name="username" value={user.username} onChange={handleChanges} />
                       <Input id='password' type="password" placeholder=" Password" name="password" value={user.password} onChange={handleChanges} />
                       <Button type="submit">Sign Up</Button>
-                      <Link to="/login">Already Registered?</Link>
+                      <Link to="/login"><h2>Already Registered?</h2></Link>
                   </Form>
              </Div>
          </Container>

@@ -23,8 +23,8 @@ const Container=styled.div`
     justify-content: center;
     align-items:center;
     align-content:center;
-    width:30em;
-    height:35vh;
+    width:50em;
+    ${'' /* height:35vh; */}
 `
 const Form=styled.form`
     display:flex;
@@ -61,9 +61,9 @@ const Button = styled.button`
     box-shadow: 0 5px 15px rgba(0,0,0,0.20);
 
 `
-const Word = styled.h1`
-background-color:gray
-`
+// const Word = styled.h1`
+// background-color:gray
+// `
 
 
 function LoginForm(props){
@@ -96,7 +96,7 @@ function LoginForm(props){
                       <Input  type="text" placeholder=" Enter Username" name="username"  value={userCredentials.username} onChange={handleChange}/>
                       <Input  type="password" placeholder=" Password" name="password" value={userCredentials.password} onChange={handleChange}/>
                       <Button type="submit">Log in</Button>
-                      <Link to="/signup"><Word>Sign Up</Word></Link>
+                      <Link to="/signup"><h1>Sign Up</h1></Link>
                   </Form>
              </Container>
         </Main>

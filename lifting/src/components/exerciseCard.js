@@ -11,7 +11,7 @@ const ExerciseCard = (props) => {
 
 
         
-    },[])
+    },[props])
     
 return (<div>
     <UpdateWorkout exerciseid={props.match.params.id} />
